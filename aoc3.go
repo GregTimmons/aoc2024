@@ -1,5 +1,7 @@
 package main
 
+//REGEX would be easier. Doing a a LR Parser for the hell of it.
+
 import (
 	"bufio"
 	"fmt"
