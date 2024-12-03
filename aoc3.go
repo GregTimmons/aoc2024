@@ -8,6 +8,7 @@ import (
 	"log"
 	"os"
 	"strconv"
+	"unicode"
 )
 type MulPair struct { l int64; r int64 }
 type Parse struct {
@@ -56,19 +57,6 @@ const (
 	ON_CLOSE_PAR MulState = "on_close_par"
 )
 
-func isDigit(c rune) bool {
-	if c == '0' { return true }
-	if c == '1' { return true }
-	if c == '2' { return true }
-	if c == '3' { return true }
-	if c == '4' { return true }
-	if c == '5' { return true }
-	if c == '6' { return true }
-	if c == '7' { return true }
-	if c == '8' { return true }
-	if c == '9' { return true }
-	return false
-}
 var lookAheadTable LookAheadTable = LookAheadTable{
 	E: { "m": ON_M, "d": ON_D, },
 	SCAN: { },
@@ -164,7 +152,7 @@ func (p *Parse)step(next rune) {
 		p.NxtState = val
 	} else if val, ok := p.LookAheadTable[p.CurState][string(next)]; ok {
 		p.NxtState = val
-	} else if val, ok := p.LookAheadTable[p.CurState][DIGIT]; ok && isDigit(next) {
+	} else if val, ok := p.LookAheadTable[p.CurState][DIGIT]; ok && unicode.IsDigit(next) {
 		p.NxtState = val
 	}
 
