@@ -57,9 +57,7 @@ func (g Grid) Walk(p Point) Score {
 	for {
 		// fmt.Printf("h=%d, wl=%+v\n", cur_height, walker_locs)
 		for _, i := range walker_locs {
-			if (g.At(i.L()) == cur_height + 1) {
-				walker_next = append(walker_next, i.L())
-			}
+			if (g.At(i.L()) == cur_height + 1) { walker_next = append(walker_next, i.L()) }
 			if (g.At(i.R()) == cur_height + 1) { walker_next = append(walker_next, i.R()) }
 			if (g.At(i.U()) == cur_height + 1) { walker_next = append(walker_next, i.U()) }
 			if (g.At(i.D()) == cur_height + 1) { walker_next = append(walker_next, i.D()) }
