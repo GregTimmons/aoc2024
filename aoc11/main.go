@@ -116,7 +116,6 @@ func Blink(s *Stone) {
 	}
 }
 
-func BlinkToSplit
 
 
 func WriteStones(s *Stone) string {
